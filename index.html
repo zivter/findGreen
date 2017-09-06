@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			div {
+				width: 90px;
+				height: 60px;
+				background: #496;
+				border-radius: 20px 20px 3px 3px;
+				position: absolute;
+				top: 100px;
+				left: 300px;
+			}
+			
+			#box2 {
+				left: 500px;
+			}
+			
+			#box3 {
+				left: 700px;
+			}
+			
+			#box4 {
+				left: 900px;
+			}
+			
+			button {
+				position: absolute;
+				left: 520px;
+				top: 30px
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+		<div id="box4"></div>
+		<button onclick="start()">start</button>
+		<script>
+			function start() {
+				var arr = [];
+				var count = 0;
+				var box1 = document.getElementById("box1");
+				var box2 = document.getElementById("box2");
+				var box3 = document.getElementById("box3");
+				var box4 = document.getElementById("box4");
+				var arr2 = [box1, box2, box3, box4];
+				console.log(arr2)
+				var timer = setInterval(function() {
+					for(var i = 0; i < 2; i++) {
+						arr[i] = parseInt(Math.random() * 4)
+					}
+					//console.log(arr[0])
+					//console.log(arr2[arr[0]])
+
+					//console.log(num3)
+					var count1 = 0;
+					var num3 = parseInt((arr2[arr[1]].offsetLeft - arr2[arr[0]].offsetLeft) / 10);
+
+					var timer2 = setInterval(function() {
+						var num1 = arr2[arr[0]].offsetLeft;
+						var num2 = arr2[arr[1]].offsetLeft;
+
+						arr2[arr[0]].style.left = num1 + num3 + "px";
+						arr2[arr[1]].style.left = num2 - num3 + "px";
+						//console.log(arr2[arr[0]].style.left)
+						//console.log(num1,num2,num3)
+						console.log(count1)
+						count1++;
+						if(count1 >= 10) {
+							//console.log(111)
+							clearInterval(timer2)
+						}
+					}, 30)
+
+					count++;
+					if(count == 10) {
+						clearInterval(timer)
+					}
+				}, 310)
+
+			}
+		</script>
+	</body>
+
+</html>
