@@ -9,15 +9,38 @@
 				margin: 0;
 				padding: 0;
 			}
+			button{
+				background: #449966;
+				border: none;
+				border-radius: 5px;
+				width: 80px;
+				height: 35px;
+			}
+			p {
+				width: 90px;
+				height: 60px;
+				background: url(img/maozi.jpg) no-repeat center;
+				background-size: 100% 100%;
+				position: absolute;
+				transition: 1s;
+			}
 			
 			div {
 				width: 90px;
 				height: 60px;
-				background: #496;
-				border-radius: 20px 20px 3px 3px;
 				position: absolute;
 				top: 100px;
 				left: 300px;
+			}
+			
+			div:hover p {
+				transform: rotate(90deg);
+				transform-origin: bottom right;
+			}
+			
+			#box1 {
+				background: url(img/pork.png) no-repeat center;
+				background-size: 70% 70%;
 			}
 			
 			#box2 {
@@ -41,11 +64,19 @@
 	</head>
 
 	<body>
-		<div id="box1"></div>
-		<div id="box2"></div>
-		<div id="box3"></div>
-		<div id="box4"></div>
-		<button onclick="start()">start</button>
+		<div id="box1">
+			<p id="b1"></p>
+		</div>
+		<div id="box2">
+			<p id="b2"></p>
+		</div>
+		<div id="box3">
+			<p id="b3"></p>
+		</div>
+		<div id="box4">
+			<p id="b4"></p>
+		</div>
+		<button onclick="start()">清蒸一下</button>
 		<script>
 			function start() {
 				var arr = [];
@@ -81,13 +112,13 @@
 							//console.log(111)
 							clearInterval(timer2)
 						}
-					}, 30)
+					}, 20)
 
 					count++;
 					if(count == 10) {
 						clearInterval(timer)
 					}
-				}, 310)
+				}, 210)
 
 			}
 		</script>
