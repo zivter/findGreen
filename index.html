@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
@@ -9,56 +8,71 @@
 				margin: 0;
 				padding: 0;
 			}
-			button{
+			button {
 				background: #449966;
 				border: none;
-				border-radius: 5px;
+				border-radius: 10px;
 				width: 80px;
 				height: 35px;
+				position: absolute;
+				left: 45%;
+				top: 30px
 			}
 			p {
 				width: 90px;
 				height: 60px;
-				background: url(img/maozi.jpg) no-repeat center;
-				background-size: 100% 100%;
+				background: url(img/maozi.png) no-repeat center;
+				background-size: 70% 70%;
 				position: absolute;
 				transition: 1s;
 			}
-			
 			div {
 				width: 90px;
 				height: 60px;
 				position: absolute;
 				top: 100px;
-				left: 300px;
 			}
-			
 			div:hover p {
 				transform: rotate(90deg);
 				transform-origin: bottom right;
 			}
-			
 			#box1 {
 				background: url(img/pork.png) no-repeat center;
-				background-size: 70% 70%;
+				background-size: 65% 65%;
+				left: 20px;
 			}
-			
 			#box2 {
-				left: 500px;
+				left: 120px;
 			}
-			
 			#box3 {
-				left: 700px;
+				left: 220px;
 			}
-			
 			#box4 {
-				left: 900px;
+				left: 320px;
 			}
-			
-			button {
-				position: absolute;
-				left: 520px;
-				top: 30px
+			@media only screen and (max-width: 499px) {
+				button {
+					left: 35%;
+				}
+			}
+			@media only screen and (min-width: 500px) {
+				p {
+					background-size: 100% 100%;
+				}
+				#box1 {
+					background: url(img/pork.png) no-repeat center;
+					background-size: 70% 70%;
+					left: 200px;
+				}
+				#box2 {
+					left: 400px;
+				}
+				#box3 {
+					left: 600px;
+				}
+				#box4 {
+					left: 800px;
+				}
 			}
 		</style>
 	</head>
@@ -96,7 +110,7 @@
 
 					//console.log(num3)
 					var count1 = 0;
-					var num3 = parseInt((arr2[arr[1]].offsetLeft - arr2[arr[0]].offsetLeft) / 10);
+					var num3 = (arr2[arr[1]].offsetLeft - arr2[arr[0]].offsetLeft) / 10;
 
 					var timer2 = setInterval(function() {
 						var num1 = arr2[arr[0]].offsetLeft;
@@ -113,12 +127,11 @@
 							clearInterval(timer2)
 						}
 					}, 20)
-
 					count++;
 					if(count == 10) {
 						clearInterval(timer)
 					}
-				}, 210)
+				}, 220)
 
 			}
 		</script>
