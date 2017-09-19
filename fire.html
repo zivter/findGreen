@@ -15,10 +15,12 @@ z
 				background: #000;
 				height: 105%;
 				overflow: hidden;
+				cursor:pointer;
 			}
 			
 			html {
 				height: 100%;
+				cursor:pointer;
 			}
 		</style>
 	</head>
@@ -79,7 +81,7 @@ z
 			}
 
 			//创建实例对象
-			document.onmouseenter = function(ev) {
+			document.onclick = function(ev) {
 				var ev = ev || window.event;
 				var nFire = new Fire(ev.clientX, ev.clientY);
 				nFire.creatF(); //调用实例函数的方法创建烟花
