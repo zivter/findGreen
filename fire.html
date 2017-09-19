@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			body{background: #000;height: 105%;overflow: hidden;}
+			html{height: 100%;}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="../js/public.js" ></script>
+		<script>
+			//创建底部烟花筒
+			//var box = document.createElement("div");
+			//document.body.appendChild(box);
+			//box.style.cssText = "width: 20px;height: 30px;background: #fff;bottom: 0;left: 50%;position: absolute;"
+			
+			//创建构造函数
+			function Fire(x,y){
+				this.x = x;
+				this.y = y;
+				this.speed = 30;
+				var that = this;
+				this.clientheight=document.documentElement.clientHeight;//可视区
+				
+				//创建烟花
+				this.creatF = function(){
+					this.yanhua = document.createElement("div");
+					this.yanhua.style.cssText = 'width:6px;height:6px;background:#fff;position:absolute;left:'+this.x+'px;top:'+this.clientheight+'px;';
+					document.body.appendChild(this.yanhua);
+					this.move1();
+				}
+				//烟花移动
+				this.move1 = function(){
+					move(this.yanhua,{top:that.y},5,function(){
+						document.body.removeChild(that.yanhua);
+						that.frag();
+					})
+				}
+				this.frag = function(){
+					for(var i = 0;i<tool.ranNum(100,300);i++){
+						this.hua = document.createElement("div");
+						this.hua.style.cssText = 'border-radius:50%;width:6px;height:6px;background:rgb('+tool.ranNum(0,255)+','+tool.ranNum(0,255)+','+tool.ranNum(0,255)+');position:absolute;left:'+this.x+'px;top:'+this.y+'px;';
+						document.body.appendChild(this.hua);
+						this.boom(this.hua)
+					}
+				}
+				this.boom = function(obj){
+					move(obj,{left:this.x+tool.ranNum(-200,200),top:this.y+tool.ranNum(-200,200)},5,function(){
+						move(obj,{opacity:0},10,function(){
+							document.body.removeChild(obj);
+						})
+					})
+				}
+				
+			}
+			
+			//创建实例对象
+			document.onclick = function(ev){
+				var ev = ev||window.event;
+				var nFire = new Fire(ev.clientX,ev.clientY);
+				nFire.creatF();//调用实例函数的方法创建烟花
+			}
+		</script>
+	</body>
+</html>
